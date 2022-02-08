@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .ekran {
+        background: #0a2d5570;
+        width: 270px;
+        height: 90px;
+        border-radius: 20px;
+        text-align: right;
+    }
+
+    .bg {
+        background: rgb(0, 0, 0);
+        width: 300px;
+        height: auto;
+        flex: wrap;
+        border-radius: 20px;
+        box-shadow: slategrey 0px 10px 10px 10px;
+
+    }
+
+    .bg button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid rgb(0, 0, 0);
+        font-size: 20px;
+        background: rgb(43, 42, 42);
+        color: white;
+        font-weight: 500;
+    }
+
+    .btn {
+        width: 80px;
+        border-radius: 50%;
+    }
+
+    #div_e {
+        color: white;
+        font-size: 25px;
+        font-weight: 500;
+    }
+</style>
+
+<body>
+    <center>
+        <h1>Calculator</h1>
+        <div class="bg">
+            <br />
+            <div class="ekran">
+                <br><br><br>
+                <span class="span1" id="div_e"></span>
+            </div>
+            <br>
+            <button style="background: rgb(138, 138, 137);" onclick="ac()">AC</button>
+            <button style="background: rgb(138, 138, 137);" onclick="btn_a('-_+')">-_+</button>
+            <button style="background: rgb(138, 138, 137);" onclick="btn_a('%')">%</button>
+            <button style="background: rgb(216, 150, 7)" onclick="btn_a('/')">/</button>
+            <button onclick="btn(7)">7</button>
+            <button onclick="btn(8)">8</button>
+            <button onclick="btn(9)">9</button>
+            <button style="background: rgb(216, 150, 7)" onclick="btn_a('*')">x</button>
+            <button onclick="btn(4)">4</button>
+            <button onclick="btn(5)">5</button>
+            <button onclick="btn(6)">6</button>
+            <button style="background: rgb(216, 150, 7)" onclick="btn_a('-')">-</button>
+            <button onclick="btn(1)">1</button>
+            <button onclick="btn(2)">2</button>
+            <button onclick="btn(3)">3</button>
+            <button style="background: rgb(216, 150, 7)" onclick="btn_a('+')">+</button>
+            <button onclick="btn(0)" style="width: 125px;border-radius: 100px;height: 60px;">0</button>
+            <button onclick="btn('.')">.</button>
+            <button style="background: rgb(216, 150, 7)" onclick="ravno()">=</button>
+            <br><br>
+        </div>
+    </center>
+    <script>
+
+        let san1 = 0;
+        let san2 = 0;
+        let f = 'a';
+        let div_e = document.getElementById('div_e');
+        let r = false;
+        function btn(num) {
+            if (r) {
+                san1 = 0;
+                san2 = 0;     
+                r = false;
+                f = 'a';
+            }
+            if (f === 'a') {
+                san1 = div_e.innerHTML += num;
+            }
+            else {
+                san2 = div_e.innerHTML += num;
+            }
+        }
+        let ww = '';
+        function btn_a(amaldar) {
+            ww = amaldar;
+            div_e.innerHTML = '';
+            f = '';
+            r = false;
+            if ('%' === ww) {
+                ww = '/'
+                san2 = 100
+                ravno()
+                san2 = 0;
+            }
+            else if ('-_+' == ww && san1 > 0) {
+                ww='-'
+                san1 = -san1
+            }
+            else if ('-_+' == ww && san2 < 0)
+                div_e.innerHTML = +san2
+        }
+        function ravno() {
+            if (r) {
+                return;
+            }
+            switch (ww) {
+                case '+':
+                    div_e.innerHTML = +san1 + +san2
+                    san1 = +san1 + +san2
+                    // san2 = null
+                    break;
+                case '-':
+                    div_e.innerHTML = +san1 - +san2
+                    san1 = +san1 - +san2
+                    // san2 = null
+                    break;
+                case '*':
+                    div_e.innerHTML = +san1 * +san2
+                    san1 = +san1 * +san2
+                    // san2 = null
+
+                    break;
+                case '/':
+                    div_e.innerHTML = +san1 / +san2
+                    san1 = +san1 / +san2
+                    // san2 = null
+                    break;
+            }
+            san2 = 0;
+            r = true;
+        }
+        function ac() {
+            div_e.innerHTML = '';
+            f = 'a';
+            r = false;
+        }
+
+    </script>
+
+</body>
+
+</html>

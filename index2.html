@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: rgb(186, 194, 194);">
+    <div id="first">
+        <h1 align="center" style="color: blue;font-size: 60px;margin-bottom: 20px;">facebook</h1>
+        <div align="center">
+            <div align="center" style="background-color: white;width: 40%;border-radius: 10px;
+        padding: 30px 0px 0px 0px ;">
+                <p style="font-size: xx-large;
+            margin-top:20px;">Log info Facebook</p>
+                <input type="email" placeholder="Email or phone number " style="width: 80%;
+            height: 40px;
+            border: 1px solid rgb(194, 168, 168);
+            border-radius: 5px;
+            " id="input">
+                <input type="password" placeholder="Password " style="width: 80%;
+             height: 40px;
+             border: 1px solid rgb(194, 168, 168);
+             border-radius: 5px;
+             margin-top: 15px;
+             " id="password">
+                <p style="display: none;color: red;" id="p">Неверный пароль или аккаунт</p>
+                <button type="text" placeholder="Login" style="width: 80%;
+              height: 40px;
+              margin-top: 15px;
+              text-align: center;
+              font-size: x-large;
+              color: rgb(236, 246, 247);
+              background-color: blue;
+              border: 1px solid rgb(194, 168, 168);
+              border-radius: 5px;
+              " id="btn" disabled>Регистрация</button>
+                <p><a href="#" style="text-decoration: none;font-size: larger;">Forgot account?</a></p>
+                <hr style="width: 90%;height: 2px;">
+                </hr>
+                <button style="width: 70%;
+              height: 40px;
+              margin-top: 15px;
+              text-align: center;
+              font-size: x-large;
+              color: rgb(236, 246, 247);
+              background-color: rgb(27, 223, 9);
+              border: 1px solid rgb(7, 238, 45);
+              border-radius: 5px;
+              margin-bottom: 30px;
+              ">NEXT</button>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; display: none;" id="now">
+        <marquee style="color: red;font-size: 70px;">welcome</marquee>
+    </div>
+    <script>
+        let input = document.getElementById("input")
+        let password = document.getElementById("password")
+        let btn = document.getElementById("btn")
+        let now = document.getElementById("now")
+        let pp = document.getElementById("p")
+        let login = ""
+        let parol = ""
+        let all = []
+        let proverka=true
+        input.oninput = function (event) {
+            l = event.target.value
+            if (input.value.length > 0 && password.value.length > 0) {
+                btn.disabled = false
+                console.log("dsfhu")
+            }
+                password.oninput = function (event) {
+                    p = event.target.value
+                    if (input.value.length > 0 && password.value.length > 0) {
+                        btn.disabled = false
+                    }
+                }
+            }
+            btn.onclick = function () {
+                if(proverka){
+                    proverka=!proverka
+              let bll= localStorage.setItem(input.value,password.value)
+               input.value=''
+               password.value=''
+               let vll=localStorage.getItem(input.value,password.value)
+                }
+                if(!proverka && vll==bll){
+                    alert("Успешно")
+
+                }
+            }
+
+    </script>
+</body>
+
+</html>
